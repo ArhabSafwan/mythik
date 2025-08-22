@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Login | Brac Innovation</title>
+    <title>Login | Mythik Admin Panel</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ asset('/') }}image/logo.png">
     <!-- Fonts -->
@@ -49,7 +49,7 @@
                 <img src="{{ asset('/') }}app-assets/img/branding/logo.png" alt="" width="70px" height="70px">
               </div>
               <!-- /Logo -->
-              <h4 class="mb-1 pt-2">Brac Innovation</h4>
+              <h4 class="mb-1 pt-2">Mythik</h4>
               <p class="mb-4">Please sign-in to your account</p>
 
               <form id="" class="mb-3" action="{{ route('login') }}" method="post">

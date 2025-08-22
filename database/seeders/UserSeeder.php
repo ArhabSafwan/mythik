@@ -16,26 +16,26 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => '3devs IT Ltd',
-            'user_name' => '3-devs',
-            'email' => 'info@3-devs.com',
+            'name' => 'Mythik',
+            'user_name' => 'mythik',
+            'email' => 'info@mythik.com',
             'password' => Hash::make('123456'),
             'role_id' => 1,
             'user_type' => 2,
             'status' => 1,
-            'slug' => Str::slug('3devs IT Ltd'), // Adding slug
+            'slug' => Str::slug('Mythik'), // Adding slug
         ]);
-        
+
         // Normal User
         User::create([
-            'name' => 'Innovation',
-            'user_name' => 'innovation',
-            'email' => 'info@brac.net',
+            'name' => 'Arhab Safwan',
+            'user_name' => 'arhab',
+            'email' => 'asafwan72@gmail.com',
             'password' => Hash::make('innovation'),
             'role_id' => 1,
             'user_type' => 2,
             'status' => 1,
-            'slug' => Str::slug('Innovation'), // Adding slug
+            'slug' => Str::slug('Arhab Safwan'), // Adding slug
         ]);
     }
 }
