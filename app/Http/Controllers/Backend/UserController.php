@@ -85,7 +85,7 @@ class UserController extends Controller
                 'password' => Hash::make($request->password),
                 'status' => $request->status,
                 'role_id' => $request->role_id,
-                'user_type	' => 2,
+                'user_type' => 2,
                 'slug' => Str::slug($request->full_name),
             ]);
 
