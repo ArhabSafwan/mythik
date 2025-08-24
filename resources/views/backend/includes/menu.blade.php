@@ -10,15 +10,24 @@
 
     // Catalog
     $catalog = [
-        'products.index', 'products.create', 'products.edit',
-        'categories.index', 'categories.create', 'categories.edit',
-        'brands.index', 'brands.create', 'brands.edit',
-        'tags.index', 'tags.create', 'tags.edit',
+        'products.index',
+        'products.create',
+        'products.edit',
+        'categories.index',
+        'categories.create',
+        'categories.edit',
+        'brands.index',
+        'brands.create',
+        'brands.edit',
+        'tags.index',
+        'tags.create',
+        'tags.edit',
     ];
 
     // Sales
     $sales = [
-        'orders.index', 'orders.show',
+        'orders.index',
+        'orders.show',
         'transactions.index',
     ];
 
@@ -27,23 +36,38 @@
 
     // Marketing
     $marketing = [
-        'coupons.index', 'coupons.create', 'coupons.edit',
+        'coupons.index',
+        'coupons.create',
+        'coupons.edit',
         'newsletter.index',
     ];
 
     // Administration
     $administration = [
-        'users.index', 'users.create', 'users.edit',
+        'users.index',
+        'users.create',
+        'users.edit',
         'activityLog.index',
-        'roles.index', 'roles.create', 'roles.edit', 'roles.permission',
-        'modules.index', 'modules.create', 'modules.edit',
-        'permissions.index', 'permissions.create', 'permissions.edit',
+        'roles.index',
+        'roles.create',
+        'roles.edit',
+        'roles.permission',
+        'modules.index',
+        'modules.create',
+        'modules.edit',
+        'permissions.index',
+        'permissions.create',
+        'permissions.edit',
     ];
 
     // Content Management
     $contentManagement = [
-        'pages.index', 'pages.create', 'pages.edit',
-        'blog.index', 'blog.create', 'blog.edit',
+        'pages.index',
+        'pages.create',
+        'pages.edit',
+        'blog.index',
+        'blog.create',
+        'blog.edit',
     ];
 
     // Settings
@@ -69,6 +93,43 @@
                 <i class="menu-icon tf-icons ti ti-home"></i>
                 <div>Dashboards</div>
             </a>
+        </li>
+
+        <!-- Administration -->
+        <li class="menu-item {{ in_array($routeName, $administration) ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-shield"></i>
+                <div>Administration</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ $routeName == 'activityLog.index' ? 'active' : '' }}">
+                    <a href="{{ route('activityLog.index') }}" class="menu-link">
+                        <div>Users Activities</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Str::startsWith($routeName, 'users.') ? 'active' : '' }}">
+                    <a href="{{ route('users.index') }}" class="menu-link">
+                        <div>Manage Users</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Str::startsWith($routeName, 'roles.') ? 'active' : '' }}">
+                    <a href="{{ route('roles.index') }}" class="menu-link">
+                        <div>Manage Roles</div>
+                    </a>
+                </li>
+                @if ($user->role_id == 1)
+                    <li class="menu-item {{ Str::startsWith($routeName, 'modules.') ? 'active' : '' }}">
+                        <a href="{{ route('modules.index') }}" class="menu-link">
+                            <div>Manage Modules</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Str::startsWith($routeName, 'permissions.') ? 'active' : '' }}">
+                        <a href="{{ route('permissions.index') }}" class="menu-link">
+                            <div>Manage Permission</div>
+                        </a>
+                    </li>
+                @endif
+            </ul>
         </li>
 
         <!-- Catalog -->
@@ -166,43 +227,6 @@
                         <div>Blog</div>
                     </a>
                 </li>
-            </ul>
-        </li>
-
-        <!-- Administration -->
-        <li class="menu-item {{ in_array($routeName, $administration) ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-shield"></i>
-                <div>Administration</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item {{ $routeName == 'activityLog.index' ? 'active' : '' }}">
-                    <a href="{{ route('activityLog.index') }}" class="menu-link">
-                        <div>Users Activities</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ Str::startsWith($routeName, 'users.') ? 'active' : '' }}">
-                    <a href="{{ route('users.index') }}" class="menu-link">
-                        <div>Manage Users</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ Str::startsWith($routeName, 'roles.') ? 'active' : '' }}">
-                    <a href="{{ route('roles.index') }}" class="menu-link">
-                        <div>Manage Roles</div>
-                    </a>
-                </li>
-                @if ($user->role_id == 1)
-                    <li class="menu-item {{ Str::startsWith($routeName, 'modules.') ? 'active' : '' }}">
-                        <a href="{{ route('modules.index') }}" class="menu-link">
-                            <div>Manage Modules</div>
-                        </a>
-                    </li>
-                    <li class="menu-item {{ Str::startsWith($routeName, 'permissions.') ? 'active' : '' }}">
-                        <a href="{{ route('permissions.index') }}" class="menu-link">
-                            <div>Manage Permission</div>
-                        </a>
-                    </li>
-                @endif
             </ul>
         </li>
 
