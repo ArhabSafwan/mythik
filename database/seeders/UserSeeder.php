@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'name' => 'Arhab Safwan',
             'user_name' => 'arhab',
             'email' => 'asafwan72@gmail.com',
-            'password' => Hash::make('innovation'),
+            'password' => Hash::make('123456'),
             'role_id' => 1,
             'user_type' => 2,
             'status' => 1,
