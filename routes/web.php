@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Manage\RoleController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Manage\ModuleController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Manage\PermissionController;
 use App\Http\Controllers\Backend\DhashboardController;
 use App\Http\Controllers\Backend\ActivityLogController;
@@ -74,6 +75,21 @@ Route::middleware(['auth'])
             Route::get('/{permission}/edit', 'edit')->name('permissions.edit');
             Route::put('/{permission}/update', 'update')->name('permissions.update');
             Route::delete('/{id}/destroy', 'destroy')->name('permissions.destroy');
+        });
+    });
+Route::middleware(['auth'])
+    ->prefix('admin')
+    ->group(function () {
+
+        Route::controller(CategoryController::class)
+            ->prefix('/categories')
+            ->group(function () {
+            Route::get('/', 'index')->name('categories.index');
+            Route::get('/create', 'create')->name('categories.create');
+            Route::post('/', 'store')->name('categories.store');
+            Route::get('/{category}/edit', 'edit')->name('categories.edit');
+            Route::put('/{category}/update', 'update')->name('categories.update');
+            Route::delete('/{id}/destroy', 'destroy')->name('categories.destroy');
         });
     });
 
