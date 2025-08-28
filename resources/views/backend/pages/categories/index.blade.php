@@ -29,8 +29,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Role Name</th>
-                                <th>Status</th>
+                                <th>Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -70,12 +69,8 @@
                         searchable: false
                     },
                     {
-                        data: 'role_name',
+                        data: 'name',
                         name: 'name'
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
                     },
                     {
                         data: 'action',
