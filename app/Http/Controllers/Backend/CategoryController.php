@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Backend\CategoryRequest;
 use App\Models\Backend\Categories;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 
 class CategoryController extends Controller
@@ -45,21 +46,41 @@ class CategoryController extends Controller
     {
         return view('backend.pages.categories.create');
     }
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $category = Categories::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        if ($category) {
+            session()->flash('message', 'Category created successfully!');
+            return redirect()->route('categories.index');
+        }
+        session()->flash('error', 'Something went wrong!');
+        return redirect()->back();
     }
     public function show(string $category)
     {
         //
     }
-    public function edit(string $category)
+    public function edit(Categories $category)
     {
         return view('backend.pages.categories.edit', compact('category'));
     }
-    public function update(Request $request, string $category)
+    public function update(CategoryRequest $request, Categories $category)
     {
-        //
+        $category->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        if ($category) {
+            session()->flash('message', 'Category updated successfully!');
+            return redirect()->route('categories.index');
+        }
+        session()->flash('error', 'Something went wrong!');
+        return redirect()->back();
     }
     public function destroy(string $id)
     {
