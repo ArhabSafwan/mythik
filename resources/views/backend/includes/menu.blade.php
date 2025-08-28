@@ -145,7 +145,7 @@
                     </a>
                 </li>
                 <li class="menu-item {{ Str::startsWith($routeName, 'categories.') ? 'active' : '' }}">
-                    <a href="{{-- route('categories.index') --}}" class="menu-link">
+                    <a href="{{ route('categories.index') }}" class="menu-link">
                         <div>Categories</div>
                     </a>
                 </li>

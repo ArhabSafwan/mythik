@@ -14,7 +14,7 @@ class CategoryController extends Controller
         if (request()->ajax()) {
             // Get user data
             $categories = Categories::query()
-                ->select('id', 'name', 'delete_able', 'status');
+                ->select('id', 'name', 'slug');
 
             return DataTables::of($categories)
                 ->addIndexColumn()  // Add index for row numbering
@@ -27,18 +27,16 @@ class CategoryController extends Controller
                     return '<span class="badge bg-' . $badgeClass . '">' . $label . '</span>';
                 })
                 ->addColumn('action', function ($row) {
-                    $editBtn = '<a href="' . route('roles.edit', $row->id) . '" class="btn btn-sm btn-primary me-1" title="Edit"><i class="fas fa-edit"></i></a>';
-
-                    $permissionBtn = '<a href="' . route('roles.permission', $row->id) . '" class="btn btn-sm btn-info me-1" title="Assigned Permission"><i class="fas fa-shield-alt"></i></a>';
+                    $editBtn = '<a href="' . route('categories.edit', $row->id) . '" class="btn btn-sm btn-primary me-1" title="Edit"><i class="fas fa-edit"></i></a>';
 
                     $deleteBtn = '';
                     if ($row->delete_able == 1) {
                         $deleteBtn = '<button data-id="' . $row->id . '" class="btn btn-sm btn-danger delete-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>';
                     }
 
-                    return $editBtn . $permissionBtn . $deleteBtn;
+                    return $editBtn . $deleteBtn;
                 })
-                ->rawColumns(['action', 'status'])// Allow raw HTML for action column
+                ->rawColumns(['action'])// Allow raw HTML for action column
                 ->make(true);  // Return response in DataTables format
         }
         return view('backend.pages.categories.index');
