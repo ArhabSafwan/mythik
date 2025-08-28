@@ -22,18 +22,11 @@ class CategoryController extends Controller
                 ->addColumn('category_name', function ($row) {
                     return $row->name ? $row->name : 'N/A';  // Handle null category
                 })
-                ->addColumn('status', function ($row) {
-                    $badgeClass = $row->status == 1 ? 'success' : 'danger';
-                    $label = $row->status == 1 ? 'Active' : 'Inactive';
-                    return '<span class="badge bg-' . $badgeClass . '">' . $label . '</span>';
-                })
+                
                 ->addColumn('action', function ($row) {
                     $editBtn = '<a href="' . route('categories.edit', $row->id) . '" class="btn btn-sm btn-primary me-1" title="Edit"><i class="fas fa-edit"></i></a>';
 
-                    $deleteBtn = '';
-                    if ($row->delete_able == 1) {
-                        $deleteBtn = '<button data-id="' . $row->id . '" class="btn btn-sm btn-danger delete-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>';
-                    }
+                    $deleteBtn = '<button data-id="' . $row->id . '" class="btn btn-sm btn-danger delete-btn" title="Delete"><i class="fas fa-trash-alt"></i></button>';
 
                     return $editBtn . $deleteBtn;
                 })
@@ -84,6 +77,11 @@ class CategoryController extends Controller
     }
     public function destroy(string $id)
     {
-        //
+        $category = Categories::find($id);
+        if ($category) {
+            $category->delete();
+            return response()->json(['success' => true, 'message' => 'Category deleted successfully!']);
+        }
+        return response()->json(['success' => false, 'message' => 'Category not found!']);
     }
 }
