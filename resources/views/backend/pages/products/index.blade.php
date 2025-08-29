@@ -1,30 +1,30 @@
 @extends('backend.template.template')
-@section('title', 'Categories')
+@section('title', 'Products')
 @section('main')
     @push('css')
     @endpush
     <h4 class="py-3 mb-4 fs-5 ">
-        <span class="text-muted fw-light">Categories /</span>
-        <span class="heading-color">All Categories </span>
+        <span class="text-muted fw-light">Products /</span>
+        <span class="heading-color">All Products</span>
     </h4>
 
     <!-- Item List Table -->
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('categories.create') }}" style="color: white;">
+            <a href="{{ route('products.create') }}" style="color: white;">
                 <button class="btn btn btn-primary waves-effect waves-light" type="button">
                     <span>
                         <i class="ti ti-plus me-0 me-sm-1 ti-xs"></i>
-                        <span class="d-none d-sm-inline-block">Create Category</span>
+                        <span class="d-none d-sm-inline-block">Create Product</span>
                     </span>
                 </button>
             </a>
         </div>
 
         <div class="card-datatable text-nowrap">
-            <div id="DataTables_Table_0_wrapper categoriesTable" class="dataTables_wrapper dt-bootstrap5 no-footer">
+            <div id="DataTables_Table_0_wrapper productsTable" class="dataTables_wrapper dt-bootstrap5 no-footer">
                 <div class="table-responsive">
-                    <table class="datatables-ajax table dataTable no-footer" id="categoriesTable"
+                    <table class="datatables-ajax table dataTable no-footer" id="productsTable"
                         aria-describedby="DataTables_Table_0_info">
                         <thead>
                             <tr>
@@ -50,12 +50,12 @@
     <script>
         $(document).ready(function() {
             // Initialize the DataTable with AJAX support
-            var table = $('#categoriesTable').DataTable({
+            var table = $('#productsTable').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
                 ajax: {
-                    url: "{{ route('categories.index') }}", // Your backend route to fetch user data
+                    url: '{{ route("products.index") }}', // Your backend route to fetch user data
                     data: function(d) {
                         d.searchValue = $('#searchInput').val(); // Get the search term
                         d.pageLength = $('select[name="DataTables_Table_0_length"]')
@@ -114,7 +114,7 @@
                     // If 'Yes' is clicked, proceed with deletion
                     $.ajax({
                         type: 'DELETE',
-                        url: '{{ route("categories.destroy", ":id") }}'.replace(':id', roleId),
+                        url: '{{ route("products.destroy", ":id") }}'.replace(':id', roleId),
                         data: {
                             _token: $('meta[name="csrf-token"]').attr('content'), // CSRF token
                         },
@@ -127,7 +127,7 @@
                                     'success'
                                 );
 
-                                $('#categoriesTable').DataTable().ajax
+                                $('#productsTable').DataTable().ajax
                                     .reload(); // Reload DataTable
                             } else {
                                 // Handle failure

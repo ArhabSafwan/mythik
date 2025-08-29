@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Manage\PermissionController;
 use App\Http\Controllers\Backend\DhashboardController;
 use App\Http\Controllers\Backend\ActivityLogController;
+use App\Http\Controllers\Backend\ProductController;
 
 Route::get('/', [DhashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
@@ -90,6 +91,16 @@ Route::middleware(['auth'])
             Route::get('/{category}/edit', 'edit')->name('categories.edit');
             Route::put('/{category}/update', 'update')->name('categories.update');
             Route::delete('/{id}/destroy', 'destroy')->name('categories.destroy');
+        });
+        Route::controller(ProductController::class)
+            ->prefix('/products')
+            ->group(function () {
+            Route::get('/', 'index')->name('products.index');
+            Route::get('/create', 'create')->name('products.create');
+            Route::post('/', 'store')->name('products.store');
+            Route::get('/{product}/edit', 'edit')->name('products.edit');
+            Route::put('/{product}/update', 'update')->name('products.update');
+            Route::delete('/{id}/destroy', 'destroy')->name('products.destroy');
         });
     });
 
