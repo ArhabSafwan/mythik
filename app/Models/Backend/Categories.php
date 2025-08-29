@@ -12,4 +12,18 @@ class Categories extends Model
         'name',
         'slug',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Products::class, 'category_id');
+    }
+
+    protected static function booted()
+    {
+        static::deleting(function ($category) {
+            foreach ($category->products as $product) {
+                $product->delete();
+            }
+        });
+    }
 }
