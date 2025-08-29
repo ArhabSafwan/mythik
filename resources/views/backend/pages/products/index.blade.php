@@ -29,7 +29,11 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -69,8 +73,24 @@
                         searchable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'product_name',
+                        name: 'product_name'
+                    },
+                    {
+                        data: 'category',
+                        name: 'category'
+                    },
+                    {
+                        data: 'price',
+                        name: 'price'
+                    },
+                    {
+                        data: 'stock',
+                        name: 'stock'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status'
                     },
                     {
                         data: 'action',
@@ -98,14 +118,14 @@
         });
 
         $(document).on('click', '.delete-btn', function() {
-            var roleId = $(this).data('id'); // Get the role ID
+            var productId = $(this).data('id'); // Get the product ID
 
             // SweetAlert confirmation
             Swal.fire({
                 title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                text: "You won\'t be able to revert this!",
                 icon: 'warning',
-                showCancelButton: false,
+                showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!',
@@ -114,7 +134,7 @@
                     // If 'Yes' is clicked, proceed with deletion
                     $.ajax({
                         type: 'DELETE',
-                        url: '{{ route("products.destroy", ":id") }}'.replace(':id', roleId),
+                        url: '{{ route("products.destroy", ":id") }}'.replace(':id', productId),
                         data: {
                             _token: $('meta[name="csrf-token"]').attr('content'), // CSRF token
                         },
@@ -123,7 +143,7 @@
                                 // On success, show success alert and reload DataTable
                                 Swal.fire(
                                     'Deleted!',
-                                    'The role has been deleted.',
+                                    'The product has been deleted.',
                                     'success'
                                 );
 
@@ -142,7 +162,7 @@
                             // Handle error if deletion fails
                             Swal.fire(
                                 'Error!',
-                                'There was an error deleting the role. Please try again.',
+                                'There was an error deleting the product. Please try again.',
                                 'error'
                             );
                         }

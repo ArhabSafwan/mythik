@@ -140,7 +140,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Str::startsWith($routeName, 'products.') ? 'active' : '' }}">
-                    <a href="{{-- route('products.index') --}}" class="menu-link">
+                    <a href="{{ route('products.index') }}" class="menu-link">
                         <div>Products</div>
                     </a>
                 </li>
