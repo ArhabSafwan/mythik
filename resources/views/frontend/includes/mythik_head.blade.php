@@ -1,7 +1,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>@yield('ftitle')</title>
+		<title>@yield('title')</title>
 		<link href="{{asset('/')}}frontend/css/bootstrap.min.css" rel="stylesheet">
 		<link href="{{asset('/')}}frontend/css/style.css?v=1.48" rel="stylesheet">
 		<link rel="shortcut icon" href="{{asset('/')}}frontend/img/fif-logo6.png" type="image/x-icon">

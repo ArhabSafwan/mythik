@@ -4,14 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Manage\RoleController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\FrontEnd\HomeController;
 use App\Http\Controllers\Manage\ModuleController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Manage\PermissionController;
 use App\Http\Controllers\Backend\DhashboardController;
 use App\Http\Controllers\Backend\ActivityLogController;
-use App\Http\Controllers\Backend\ProductController;
 
-Route::get('/', [DhashboardController::class, 'index'])
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/dashboard', [DhashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
