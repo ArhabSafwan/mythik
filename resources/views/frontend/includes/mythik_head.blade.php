@@ -4,8 +4,8 @@
 		<title>@yield('title')</title>
 		<link href="{{asset('/')}}frontend/css/bootstrap.min.css" rel="stylesheet">
 		<link href="{{asset('/')}}frontend/css/style.css?v=1.48" rel="stylesheet">
-		<link rel="shortcut icon" href="{{asset('/')}}frontend/img/fif-logo6.png" type="image/x-icon">
-		<link rel="icon" href="{{asset('/')}}frontend/img/fif-logo6.png" type="image/x-icon">
+		<link rel="shortcut icon" href="{{asset('/')}}frontend/img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="{{asset('/')}}frontend/img/favicon.ico" type="image/x-icon">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 		<!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
