@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\CategoryRequest;
+use Illuminate\Support\Str;
+use App\Helpers\FileUploadHelper;
 use App\Models\Backend\Categories;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
+use App\Http\Requests\Backend\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -22,7 +23,7 @@ class CategoryController extends Controller
                 ->addColumn('category_name', function ($row) {
                     return $row->name ? $row->name : 'N/A';  // Handle null category
                 })
-                
+
                 ->addColumn('action', function ($row) {
                     $editBtn = '<a href="' . route('categories.edit', $row->id) . '" class="btn btn-sm btn-primary me-1" title="Edit"><i class="fas fa-edit"></i></a>';
 
@@ -45,6 +46,9 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
         ]);
+        if ($request->hasFile('image')) {
+            $category['image'] = FileUploadHelper::upload($request->file('image'), null, 'categories');
+        }
 
         if ($category) {
             session()->flash('message', 'Category created successfully!');
@@ -67,6 +71,9 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
         ]);
+        if ($request->hasFile('image')) {
+            $category['image'] = FileUploadHelper::upload($request->file('image'), $category->image, 'categories');
+        }
 
         if ($category) {
             session()->flash('message', 'Category updated successfully!');

@@ -25,5 +25,11 @@ class CategoryRequest extends FormRequest
         return [
             'name' => 'required|string|max:255|unique:categories,name,' . $categoryId,
         ];
+        
+        if ($this->isMethod('put') || $this->isMethod('patch')) {
+            $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+        } else {
+            $rules['image'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+        }
     }
 }

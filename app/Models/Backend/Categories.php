@@ -10,6 +10,7 @@ class Categories extends Model
     use SoftDeletes;
     protected $fillable = [
         'name',
+        'image',
         'slug',
     ];
 
