@@ -54,8 +54,8 @@
                                         @error('image')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
-                                        @if ($product->image)
-                                            <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image"
+                                        @if ($category->image)
+                                            <img src="{{ asset('storage/' . $category->image) }}" alt="Product Image"
                                                 class="mt-2" width="100">
                                         @endif
                                     </div>
