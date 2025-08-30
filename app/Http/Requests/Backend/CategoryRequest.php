@@ -22,14 +22,18 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         $categoryId = $this->route('category') ? $this->route('category')->id : null;
-        return [
+        $rules = [
             'name' => 'required|string|max:255|unique:categories,name,' . $categoryId,
         ];
-        
+
         if ($this->isMethod('put') || $this->isMethod('patch')) {
+            // For update, image is optional
             $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
         } else {
+            // For create, image is required
             $rules['image'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
         }
+
+        return $rules;
     }
 }

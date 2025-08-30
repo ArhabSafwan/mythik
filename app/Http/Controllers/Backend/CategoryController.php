@@ -42,13 +42,16 @@ class CategoryController extends Controller
     }
     public function store(CategoryRequest $request)
     {
-        $category = Categories::create([
+        $data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-        ]);
+        ];
+
         if ($request->hasFile('image')) {
-            $category['image'] = FileUploadHelper::upload($request->file('image'), null, 'categories');
+            $data['image'] = FileUploadHelper::upload($request->file('image'), null, 'categories');
         }
+
+        $category = Categories::create($data);
 
         if ($category) {
             session()->flash('message', 'Category created successfully!');
@@ -67,13 +70,16 @@ class CategoryController extends Controller
     }
     public function update(CategoryRequest $request, Categories $category)
     {
-        $category->update([
+        $data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-        ]);
+        ];
+
         if ($request->hasFile('image')) {
-            $category['image'] = FileUploadHelper::upload($request->file('image'), $category->image, 'categories');
+            $data['image'] = FileUploadHelper::upload($request->file('image'), $category->image, 'categories');
         }
+
+        $category->update($data);
 
         if ($category) {
             session()->flash('message', 'Category updated successfully!');
