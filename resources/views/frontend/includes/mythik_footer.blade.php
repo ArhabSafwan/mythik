@@ -16,7 +16,7 @@
                         <li><a href="#">RETURN AND REFUNDS</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">RETURN AND REFUNDS</a></li>
-                        <li><a href="#">MY ACCOUNT</a></li>
+                        <li><a href="{{ route('login') }}">MY ACCOUNT</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="footer-bottom text-center py-3">
-        <p class="m-0">&copy; 2025 MYTHIK ALL RIGHTS RESERVED. DEVELOPED BY WEBLOOM STUDIO</p>
+        <p class="m-0">&copy; {{ date('Y') }} MYTHIK ALL RIGHTS RESERVED. DEVELOPED BY WEBLOOM STUDIO</p>
     </div>
 </footer>
 <!--End Main Footer -->
