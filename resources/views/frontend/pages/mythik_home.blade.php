@@ -13,42 +13,17 @@
         <div class="container">
             <h2 class="text-center mb-5">CATEGORIES</h2>
             <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/categories/tshirt.jpg') }}" alt="T-Shirt" class="img-fluid">
-                        <div class="category-item-overlay">
-                            <h3>T-SHIRT</h3>
-                            <a href="#" class="btn btn-light">SHOP NOW</a>
+                @foreach ($categories as $category)
+                    <div class="col-lg-6 mb-4">
+                        <div class="category-item">
+                            <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="img-fluid">
+                            <div class="category-item-overlay">
+                                <h3>{{ strtoupper($category->name) }}</h3>
+                                <a href="#" class="btn btn-light">SHOP NOW</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/categories/wallet.jpg') }}" alt="Wallet" class="img-fluid">
-                        <div class="category-item-overlay">
-                            <h3>WALLET</h3>
-                            <a href="#" class="btn btn-light">SHOP NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/categories/totes.png') }}" alt="Totes" class="img-fluid">
-                        <div class="category-item-overlay">
-                            <h3>TOTES</h3>
-                            <a href="#" class="btn btn-light">SHOP NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="category-item">
-                        <img src="{{ asset('frontend/images/categories/bags.jpg') }}" alt="Bags" class="img-fluid">
-                        <div class="category-item-overlay">
-                            <h3>BAGS</h3>
-                            <a href="#" class="btn btn-light">SHOP NOW</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
