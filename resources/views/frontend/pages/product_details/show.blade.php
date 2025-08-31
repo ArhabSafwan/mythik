@@ -1,10 +1,12 @@
-@extends('frontend.layouts.app')
+@extends('frontend.mythik_main')
+@section('title', 'Mythik')
 
-@section('content')
+
+@section('mythik_content')
     <div class="container my-5 product-details-container">
         <div class="row">
             <div class="col-md-6 product-image-gallery">
-                <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->title }}"
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}"
                     class="img-fluid rounded">
             </div>
             <div class="col-md-6 product-info">
@@ -45,18 +47,16 @@
         <div class="mt-5 product-tabs">
             <ul class="nav nav-tabs" id="productTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab"
-                        data-bs-target="#description" type="button" role="tab" aria-controls="description"
-                        aria-selected="true">Description</button>
+                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description"
+                        type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
-                        type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
+                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button"
+                        role="tab" aria-controls="reviews" aria-selected="false">Reviews</button>
                 </li>
             </ul>
             <div class="tab-content" id="productTabContent">
-                <div class="tab-pane fade show active" id="description" role="tabpanel"
-                    aria-labelledby="description-tab">
+                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
                     <p class="mt-3">{{ $product->description }}</p>
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
@@ -109,19 +109,19 @@
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const minusButton = document.getElementById('button-minus');
             const plusButton = document.getElementById('button-plus');
             const quantityInput = document.getElementById('quantity-input');
 
-            minusButton.addEventListener('click', function() {
+            minusButton.addEventListener('click', function () {
                 let currentValue = parseInt(quantityInput.value);
                 if (currentValue > 1) {
                     quantityInput.value = currentValue - 1;
                 }
             });
 
-            plusButton.addEventListener('click', function() {
+            plusButton.addEventListener('click', function () {
                 let currentValue = parseInt(quantityInput.value);
                 quantityInput.value = currentValue + 1;
             });

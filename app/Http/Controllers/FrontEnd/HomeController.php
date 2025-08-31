@@ -12,7 +12,11 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Categories::latest()->take(4)->get();
-        return view('frontend.pages.mythik_home', compact('categories'));
+        $trendingProducts = Products::latest()->take(3)->get();
+        $bestSellingProducts = Products::inRandomOrder()->take(3)->get();
+        $fandomProducts = Products::inRandomOrder()->take(9)->get();
+
+        return view('frontend.pages.mythik_home', compact('categories', 'trendingProducts', 'bestSellingProducts', 'fandomProducts'));
     }
     public function show(Request $request)
     {

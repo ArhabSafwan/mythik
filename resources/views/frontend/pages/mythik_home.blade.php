@@ -35,23 +35,16 @@
                 <a href="#" class="text-dark">View All</a>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <a href="{{ route('product.show', ['slug' => 'madara']) }}">
-                        <div class="trending-item">
-                            <img src="{{ asset('frontend/images/trending/madara.jpg') }}" alt="Madara" class="img-fluid">
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/trending/marvel.jpg') }}" alt="Marvel" class="img-fluid">
+                @foreach ($trendingProducts as $product)
+                    <div class="col-md-4 mb-4">
+                        <a href="{{ route('product.show', ['slug' => $product->slug]) }}">
+                            <div class="trending-item">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}"
+                                    class="img-fluid">
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/trending/onepiece.jpg') }}" alt="One Piece" class="img-fluid">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -62,21 +55,16 @@
                 <a href="#" class="text-dark">View All</a>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/best/dc.jpg') }}" alt="DC" class="img-fluid">
+                @foreach ($bestSellingProducts as $product)
+                    <div class="col-md-4 mb-4">
+                        <a href="{{ route('product.show', ['slug' => $product->slug]) }}">
+                            <div class="trending-item">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}"
+                                    class="img-fluid">
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/best/marvel.jpg') }}" alt="Marvel" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/best/onepiece.jpg') }}" alt="One Piece" class="img-fluid">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -87,55 +75,16 @@
                 <a href="#" class="text-dark">View All</a>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/best/dc.jpg') }}" alt="DC" class="img-fluid">
+                @foreach ($fandomProducts as $product)
+                    <div class="col-md-4 mb-4">
+                        <a href="{{ route('product.show', ['slug' => $product->slug]) }}">
+                            <div class="trending-item">
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->title }}"
+                                    class="img-fluid">
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/best/marvel.jpg') }}" alt="Marvel" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/best/onepiece.jpg') }}" alt="One Piece" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/fandom/naruto.jpg') }}" alt="Naruto" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/fandom/aot.jpg') }}" alt="Attack on Titan" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/fandom/demonslayer.jpg') }}" alt="Demon Slayer" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/fandom/pokemon.jpg') }}" alt="Pokemon" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/fandom/dbz.jpg') }}" alt="Dragon Ball Z" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/fandom/sololeveling.jpg') }}" alt="Solo Leveling" class="img-fluid">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
