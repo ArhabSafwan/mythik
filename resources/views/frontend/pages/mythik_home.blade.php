@@ -36,9 +36,11 @@
             </div>
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="trending-item">
-                        <img src="{{ asset('frontend/images/trending/madara.jpg') }}" alt="Madara" class="img-fluid">
-                    </div>
+                    <a href="{{ route('product.show', ['slug' => 'madara']) }}">
+                        <div class="trending-item">
+                            <img src="{{ asset('frontend/images/trending/madara.jpg') }}" alt="Madara" class="img-fluid">
+                        </div>
+                    </a>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="trending-item">

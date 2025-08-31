@@ -12,7 +12,13 @@ use App\Http\Controllers\Manage\PermissionController;
 use App\Http\Controllers\Backend\DhashboardController;
 use App\Http\Controllers\Backend\ActivityLogController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::controller(HomeController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('home');
+        Route::get('/product/show', 'show')->name('product.show');
+    });
+
 
 Route::get('/dashboard', [DhashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
@@ -88,23 +94,23 @@ Route::middleware(['auth'])
         Route::controller(CategoryController::class)
             ->prefix('/categories')
             ->group(function () {
-            Route::get('/', 'index')->name('categories.index');
-            Route::get('/create', 'create')->name('categories.create');
-            Route::post('/', 'store')->name('categories.store');
-            Route::get('/{category}/edit', 'edit')->name('categories.edit');
-            Route::put('/{category}/update', 'update')->name('categories.update');
-            Route::delete('/{id}/destroy', 'destroy')->name('categories.destroy');
-        });
+                Route::get('/', 'index')->name('categories.index');
+                Route::get('/create', 'create')->name('categories.create');
+                Route::post('/', 'store')->name('categories.store');
+                Route::get('/{category}/edit', 'edit')->name('categories.edit');
+                Route::put('/{category}/update', 'update')->name('categories.update');
+                Route::delete('/{id}/destroy', 'destroy')->name('categories.destroy');
+            });
         Route::controller(ProductController::class)
             ->prefix('/products')
             ->group(function () {
-            Route::get('/', 'index')->name('products.index');
-            Route::get('/create', 'create')->name('products.create');
-            Route::post('/', 'store')->name('products.store');
-            Route::get('/{product}/edit', 'edit')->name('products.edit');
-            Route::put('/{product}/update', 'update')->name('products.update');
-            Route::delete('/{id}/destroy', 'destroy')->name('products.destroy');
-        });
+                Route::get('/', 'index')->name('products.index');
+                Route::get('/create', 'create')->name('products.create');
+                Route::post('/', 'store')->name('products.store');
+                Route::get('/{product}/edit', 'edit')->name('products.edit');
+                Route::put('/{product}/update', 'update')->name('products.update');
+                Route::delete('/{id}/destroy', 'destroy')->name('products.destroy');
+            });
     });
 
 require __DIR__ . '/auth.php';
