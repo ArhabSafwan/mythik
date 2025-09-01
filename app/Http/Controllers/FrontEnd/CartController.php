@@ -41,7 +41,7 @@ class CartController extends Controller
                 'price' => $price,
             ]);
         }
-        
+
         $cartCount = CartItems::when(Auth::check(), function ($query) {
             return $query->where('user_id', Auth::id());
         }, function ($query) {
@@ -75,5 +75,12 @@ class CartController extends Controller
             ->sum('quantity');
 
         return response()->json(['count' => $cartCount]);
+    }
+
+    public function destroy(CartItems $cartItem)
+    {
+        $cartItem->delete();
+
+        return redirect()->route('cart.index')->with('success', 'Item removed from cart successfully.');
     }
 }

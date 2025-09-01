@@ -29,9 +29,9 @@
                         <button class="btn btn-primary btn-lg" type="submit">
                             <i class="fas fa-shopping-cart me-2"></i> Add to Cart
                         </button>
-                        <button class="btn btn-outline-secondary btn-lg" type="button">
+                        {{-- <button class="btn btn-outline-secondary btn-lg" type="button">
                             <i class="fas fa-heart me-2"></i> Add to Wishlist
-                        </button>
+                        </button> --}}
                     </div>
                 </form>
                 <div class="mt-4">

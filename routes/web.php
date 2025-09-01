@@ -26,6 +26,7 @@ Route::controller(CartController::class)
         Route::get('/', 'index')->name('cart.index');
         Route::post('/add', 'store')->name('cart.store');
         Route::get('/count', 'count')->name('cart.count');
+        Route::delete('/remove/{cartItem}', 'destroy')->name('cart.destroy');
     });
 
 
