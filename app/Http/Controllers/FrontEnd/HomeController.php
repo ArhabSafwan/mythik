@@ -7,6 +7,7 @@ use App\Models\Backend\Products;
 use App\Models\Backend\Categories;
 use App\Http\Controllers\Controller;
 
+
 class HomeController extends Controller
 {
     public function index()
@@ -24,4 +25,6 @@ class HomeController extends Controller
         $product = Products::where('slug', $slug)->firstOrFail();
         return view('frontend.pages.product_details.show', compact('product'));
     }
+
+    
 }

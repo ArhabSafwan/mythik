@@ -11,12 +11,21 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Manage\PermissionController;
 use App\Http\Controllers\Backend\DhashboardController;
 use App\Http\Controllers\Backend\ActivityLogController;
+use App\Http\Controllers\FrontEnd\CartController;
 
 
 Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('home');
         Route::get('/product/show', 'show')->name('product.show');
+    });
+
+Route::controller(CartController::class)
+    ->prefix('cart')
+    ->group(function () {
+        Route::get('/', 'index')->name('cart.index');
+        Route::post('/add', 'store')->name('cart.store');
+        Route::get('/count', 'count')->name('cart.count');
     });
 
 

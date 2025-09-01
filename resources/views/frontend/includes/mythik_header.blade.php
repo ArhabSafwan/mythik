@@ -16,7 +16,10 @@
                 <div class="d-lg-none">
                     <a href="{{ route('login') }}" class="text-white ms-2"><i class="fas fa-user"></i></a>
                     <a href="#" class="text-white ms-2"><i class="fas fa-heart"></i></a>
-                    <a href="#" class="text-white ms-2"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="{{ route('cart.index') }}" class="text-white ms-2 position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ $cartCount > 0 ? $cartCount : '' }}</span>
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="main-nav">
@@ -39,7 +42,10 @@
                                 aria-label="Search">
                             <a href="{{ route('login') }}" class="text-white ms-2"><i class="fas fa-user"></i></a>
                             <a href="#" class="text-white ms-2"><i class="fas fa-heart"></i></a>
-                            <a href="#" class="text-white ms-2"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="{{ route('cart.index') }}" class="text-white ms-2 position-relative">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ $cartCount > 0 ? $cartCount : '' }}</span>
+                            </a>
                         </form>
                     </div>
 

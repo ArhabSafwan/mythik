@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Http\View\Composers\CartComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         }
         DB::statement("SET time_zone = '+06:00'");
         Schema::defaultStringLength(191);
+        View::composer('frontend.includes.mythik_header', CartComposer::class);
     }
 }
