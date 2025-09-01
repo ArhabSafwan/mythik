@@ -113,47 +113,46 @@
 
 @push('script')
     <script>
-        $(document).ready(function () {
-            // Event Delegation for quantity buttons
-            $(document).on('click', '.quantity-btn-minus', function () {
-                console.log('Minus button clicked.');
+        $(document).ready(function() {
+            // Use event delegation with the correct CLASS selectors
+            $(document).on('click', '.quantity-btn-minus', function() {
                 const quantityInput = $('#quantity-input');
                 let currentValue = parseInt(quantityInput.val(), 10);
-                console.log('Value before decrement:', currentValue);
-
                 if (currentValue > 1) {
                     quantityInput.val(currentValue - 1);
-                    console.log('Value after decrement:', quantityInput.val());
-                } else {
-                    console.log('Value not decremented, already at 1.');
                 }
             });
 
-            $(document).on('click', '.quantity-btn-plus', function () {
-                console.log('Plus button clicked.');
+            $(document).on('click', '.quantity-btn-plus', function() {
                 const quantityInput = $('#quantity-input');
                 let currentValue = parseInt(quantityInput.val(), 10);
-                console.log('Value before increment:', currentValue);
-
                 quantityInput.val(currentValue + 1);
-
-                console.log('Value after increment:', quantityInput.val());
             });
 
-            $('#addToCartForm').on('submit', function (e) {
+            $('#addToCartForm').on('submit', function(e) {
                 e.preventDefault();
 
                 $.ajax({
                     url: $(this).attr('action'),
                     method: $(this).attr('method'),
                     data: $(this).serialize(),
-                    success: function (data) {
-                        alert(data.message);
+                    success: function(data) {
+                        // Use SweetAlert for a centered modal notification
+                        Swal.fire({
+                            title: 'Success!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
                         updateCartCount(data.cartCount);
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.error('Error:', error);
-                        alert('Something went wrong! Please try again.');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong! Please try again.'
+                        });
                     }
                 });
             });
