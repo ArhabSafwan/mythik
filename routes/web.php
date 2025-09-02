@@ -12,6 +12,18 @@ use App\Http\Controllers\Manage\PermissionController;
 use App\Http\Controllers\Backend\DhashboardController;
 use App\Http\Controllers\Backend\ActivityLogController;
 use App\Http\Controllers\FrontEnd\CartController;
+use App\Http\Controllers\FrontEnd\CustomerAuthController;
+
+
+Route::controller(CustomerAuthController::class)
+    ->group(function () {
+        Route::get('customer/login', 'showLoginForm')->name('customer.login');
+        Route::post('customer/login', 'login');
+        Route::get('customer/register', 'showRegistrationForm')->name('customer.register');
+        Route::post('customer/register', 'register');
+        Route::post('customer/logout', 'logout')->name('customer.logout');
+    });
+
 
 
 Route::controller(HomeController::class)

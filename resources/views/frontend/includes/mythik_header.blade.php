@@ -14,7 +14,7 @@
 
                 <!-- Icons on the right (for mobile) -->
                 <div class="d-lg-none">
-                    <a href="{{ route('login') }}" class="text-white ms-2"><i class="fas fa-user"></i></a>
+                    @include('frontend.includes.user_menu', ['idSuffix' => 'Mobile'])
                     <a href="#" class="text-white ms-2"><i class="fas fa-heart"></i></a>
                     <a href="{{ route('cart.index') }}" class="text-white ms-2 position-relative">
                         <i class="fas fa-shopping-cart"></i>
@@ -40,7 +40,7 @@
                         <form class="d-flex align-items-center" action="{{-- route('search') --}}" method="GET">
                             <input class="form-control me-2" type="search" name="q" placeholder="what are you looking for?"
                                 aria-label="Search">
-                            <a href="{{ route('login') }}" class="text-white ms-2"><i class="fas fa-user"></i></a>
+                            @include('frontend.includes.user_menu', ['idSuffix' => 'Desktop'])
                             <a href="#" class="text-white ms-2"><i class="fas fa-heart"></i></a>
                             <a href="{{ route('cart.index') }}" class="text-white ms-2 position-relative">
                                 <i class="fas fa-shopping-cart"></i>
