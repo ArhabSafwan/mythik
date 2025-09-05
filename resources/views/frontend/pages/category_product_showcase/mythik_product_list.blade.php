@@ -1,7 +1,7 @@
 @extends('frontend.mythik_main')
 @section('title', $category->name)
 
-@push('css')
+@push('fcss')
     <style>
         .hero-section {
             background-image: url('{{ asset('storage/' . $category->image) }}');

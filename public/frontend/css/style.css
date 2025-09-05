@@ -466,7 +466,7 @@ html {
     width: 100%;
     border-radius: 20px;
     font-weight: 500;
-    background-color: #212529;
+    background-color: #000000;
     color: #fff;
     border: 1px solid #212529;
     transition: background-color 0.3s ease, color 0.3s ease;
