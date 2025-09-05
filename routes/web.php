@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\DhashboardController;
 use App\Http\Controllers\Backend\ActivityLogController;
 use App\Http\Controllers\FrontEnd\CartController;
 use App\Http\Controllers\FrontEnd\CustomerAuthController;
+use App\Http\Controllers\FrontEnd\CategoryPageController;
 
 
 Route::controller(CustomerAuthController::class)
@@ -31,6 +32,8 @@ Route::controller(HomeController::class)
         Route::get('/', 'index')->name('home');
         Route::get('/product/show', 'show')->name('product.show');
     });
+
+Route::get('/category/{slug}', [CategoryPageController::class, 'show'])->name('category.show');
 
 Route::controller(CartController::class)
     ->prefix('cart')

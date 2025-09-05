@@ -19,7 +19,7 @@
                             <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" class="img-fluid">
                             <div class="category-item-overlay">
                                 <h3>{{ strtoupper($category->name) }}</h3>
-                                <a href="#" class="btn btn-light">SHOP NOW</a>
+                                <a href="{{ route('category.show', $category->slug) }}" class="btn btn-light">SHOP NOW</a>
                             </div>
                         </div>
                     </div>
