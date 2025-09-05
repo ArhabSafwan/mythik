@@ -417,3 +417,62 @@ html {
 .review-rating .fa-star {
     color: #ffc107;
 }
+
+/* Product Showcase Card */
+.product-showcase-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%; /* Make card fill the column height */
+}
+
+.product-showcase-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.product-showcase-card .card-img-container {
+    height: 350px; /* Fixed height for image consistency */
+    overflow: hidden;
+}
+
+.product-showcase-card .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+}
+
+.product-showcase-card .card-body {
+    padding: 1rem;
+    text-align: center;
+}
+
+.product-showcase-card .card-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.product-showcase-card .card-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.product-showcase-card .btn-add-to-cart {
+    width: 100%;
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: #212529;
+    color: #fff;
+    border: 1px solid #212529;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-showcase-card .btn-add-to-cart:hover {
+    background-color: #fff;
+    color: #212529;
+}
