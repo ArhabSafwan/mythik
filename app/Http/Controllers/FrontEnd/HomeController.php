@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Categories::latest()->take(4)->get();
+        $categories = Categories::get()->where('parent_id', null);
         $trendingProducts = Products::latest()->take(3)->get();
         $bestSellingProducts = Products::inRandomOrder()->take(3)->get();
         $fandomProducts = Products::inRandomOrder()->take(9)->get();
@@ -26,5 +26,5 @@ class HomeController extends Controller
         return view('frontend.pages.product_details.show', compact('product'));
     }
 
-    
+
 }
