@@ -38,7 +38,7 @@
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">{{ $product->title }}</h5>
                                     <p class="card-price">₹{{ $product->price }}</p>
-                                    <button class="btn btn-add-to-cart mt-auto" onclick="addToCart({{ $product->id }})">ADD TO CART</button>
+                                    <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="btn btn-add-to-cart mt-auto">VIEW DETAILS</a>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                         <div class="card-body d-flex flex-column">
                                             <h5 class="card-title">{{ $product->title }}</h5>
                                             <p class="card-price">₹{{ $product->price }}</p>
-                                            <button class="btn btn-add-to-cart mt-auto" onclick="addToCart({{ $product->id }})">ADD TO CART</button>
+                                            <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="btn btn-add-to-cart mt-auto">VIEW DETAILS</a>
                                         </div>
                                     </div>
                                 </div>
@@ -80,33 +80,5 @@
 @endsection
 
 @push('script')
-<script>
-    function addToCart(productId) {
-        axios.post('{{ route('cart.store') }}', {
-            product_id: productId,
-            quantity: 1
-        })
-        .then(function (response) {
-            alert(response.data.message);
-            updateCartCount();
-        })
-        .catch(function (error) {
-            console.error(error);
-            alert('Something went wrong!');
-        });
-    }
-
-    function updateCartCount() {
-        axios.get('{{ route('cart.count') }}')
-        .then(function (response) {
-            const cartCountElement = document.getElementById('cart-count');
-            if(cartCountElement) {
-                cartCountElement.innerText = response.data.count;
-            }
-        })
-        .catch(function (error) {
-            console.error(error);
-        });
-    }
-</script>
+{{-- Scripts removed as they are no longer needed --}}
 @endpush
