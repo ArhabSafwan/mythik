@@ -38,13 +38,15 @@ class CategoryController extends Controller
     }
     public function create()
     {
-        return view('backend.pages.categories.create');
+        $categories = Categories::all();
+        return view('backend.pages.categories.create', compact('categories'));
     }
     public function store(CategoryRequest $request)
     {
         $data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'parent_id' => $request->parent_id,
         ];
 
         if ($request->hasFile('image')) {
@@ -66,13 +68,15 @@ class CategoryController extends Controller
     }
     public function edit(Categories $category)
     {
-        return view('backend.pages.categories.edit', compact('category'));
+        $categories = Categories::where('id', '!=', $category->id)->get();
+        return view('backend.pages.categories.edit', compact('category', 'categories'));
     }
     public function update(CategoryRequest $request, Categories $category)
     {
         $data = [
             'name' => $request->name,
             'slug' => Str::slug($request->name),
+            'parent_id' => $request->parent_id,
         ];
 
         if ($request->hasFile('image')) {

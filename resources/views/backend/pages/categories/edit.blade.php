@@ -62,6 +62,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <label class="col-sm-3 col-form-label text-sm-end" for="parent_id">Category</label>
+                                    <div class="col-sm-9">
+                                        <select name="parent_id" id="parent_id"
+                                            class="form-select @error('parent_id') is-invalid @enderror">
+                                            <option value="">Select Parent Category</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}" {{ old('parent_id', $category->parent_id) == $category->parent_id ? 'selected' : '' }}>
+                                                    {{ $category->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('parent_id')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <div class="row justify-content-end">
