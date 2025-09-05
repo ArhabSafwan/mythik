@@ -4,20 +4,40 @@
 @push('fcss')
     <style>
         .hero-section {
-            background-image: url('{{ asset('storage/' . $category->image) }}');
+            position: relative; /* Needed for overlay */
             height: 50vh;
+            background-image: url('{{ asset('storage/' . $category->image) }}');
             background-size: cover;
             background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+
+        .hero-section .hero-title {
+            position: relative; /* To bring it in front of the overlay */
+            font-size: 4rem;
+            font-weight: 900; /* Using a heavy font weight like in the site's theme */
+            text-transform: uppercase;
         }
     </style>
 @endpush
 
 @section('mythik_content')
     <div class="hero-section">
-        {{-- The hero image is set via CSS --}}
+        <h1 class="hero-title">{{ $category->name }}</h1>
     </div>
 
     <div class="container py-5">
