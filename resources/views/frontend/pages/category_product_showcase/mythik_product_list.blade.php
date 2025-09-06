@@ -57,7 +57,7 @@
                                 </a>
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="card-title">{{ $product->title }}</h5>
-                                    <p class="card-price">₹{{ $product->price }}</p>
+                                    <p class="card-price">৳{{ $product->price }}</p>
                                     <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="btn btn-add-to-cart mt-auto">VIEW DETAILS</a>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@
                                         </a>
                                         <div class="card-body d-flex flex-column">
                                             <h5 class="card-title">{{ $product->title }}</h5>
-                                            <p class="card-price">₹{{ $product->price }}</p>
+                                            <p class="card-price">৳{{ $product->price }}</p>
                                             <a href="{{ route('product.show', ['slug' => $product->slug]) }}" class="btn btn-add-to-cart mt-auto">VIEW DETAILS</a>
                                         </div>
                                     </div>

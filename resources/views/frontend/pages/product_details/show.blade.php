@@ -12,7 +12,7 @@
                 <h1 class="display-5 fw-bold">{{ $product->title }}</h1>
                 <p class="lead">{{ $product->description }}</p>
                 <hr>
-                <h2 class="price">${{ number_format($product->price, 2) }}</h2>
+                <h2 class="price">৳{{ number_format($product->price, 2) }}</h2>
                 <form id="addToCartForm" action="{{ route('cart.store') }}" method="POST">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
